@@ -3,10 +3,11 @@
 //Выпадающий список
 import dropList from './modules/dropList';
 //Модалка бесплатного визита
-import visitModal from './modules/freeVisitModal';
+import toggleForm from './modules/toggleForm';
 
 
 //Выпадающий список
 dropList();
-//Модалка бесплатного визита
-visitModal();
+//Открытие и закрытие модалок
+toggleForm(document.getElementById('free_visit_form'), document.querySelector('.open-popup'));
+toggleForm(document.getElementById('callback_form'), document.querySelector('.callback-btn'));

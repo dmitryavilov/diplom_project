@@ -1,7 +1,4 @@
-const visitModal = () => {
-    const modal = document.getElementById('free_visit_form'),
-          modalLink = document.querySelector('.open-popup');
-
+const visitModal = (modal, modalLink) => {
     modal.style.height = '100vh';
 
     const openModal = () => {
