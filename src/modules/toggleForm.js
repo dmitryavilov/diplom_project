@@ -1,8 +1,11 @@
-const visitModal = (modal, modalLink) => {
+const visitModal = (modal, modalLink, callback) => {
     modal.style.height = '100vh';
 
     const openModal = () => {
         modal.style.display = 'block';
+        try {
+            callback();
+        } catch {};
     };
 
     const closeModal = () => {
@@ -13,7 +16,7 @@ const visitModal = (modal, modalLink) => {
     modal.addEventListener('click', e => {
         let target = e.target;
 
-        if (target.matches('.overlay') || target.matches('.close_icon')) {
+        if (target.matches('.overlay') || target.matches('.close_icon') || target.matches('.close-btn')) {
             closeModal();
         };
     });
