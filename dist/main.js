@@ -38,7 +38,7 @@ eval("\nmodule.exports = function () {\n\treturn /[\\u001b\\u009b][[()#;?]*(?:[0
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_dropList_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/dropList.js */ \"./src/modules/dropList.js\");\n\n\n\n(0,_modules_dropList_js__WEBPACK_IMPORTED_MODULE_0__.default)();\n\n//# sourceURL=webpack://3dglo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_dropList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/dropList */ \"./src/modules/dropList.js\");\n/* harmony import */ var _modules_freeVisitModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/freeVisitModal */ \"./src/modules/freeVisitModal.js\");\n //Выпадающий список\n\n //Модалка бесплатного визита\n\n //Выпадающий список\n\n(0,_modules_dropList__WEBPACK_IMPORTED_MODULE_0__.default)(); //Модалка бесплатного визита\n\n(0,_modules_freeVisitModal__WEBPACK_IMPORTED_MODULE_1__.default)();\n\n//# sourceURL=webpack://3dglo/./src/index.js?");
 
 /***/ }),
 
@@ -50,6 +50,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar dropList = function dropList() {\n  var clubList = document.querySelector('.club-select'),\n      hiddenContent = clubList.querySelector('ul');\n\n  var toggleList = function toggleList() {\n    if (clubList.classList.contains('list-active')) {\n      clubList.classList.remove('list-active');\n      hiddenContent.style.display = 'none';\n    } else {\n      clubList.classList.add('list-active');\n      hiddenContent.style.display = 'block';\n    }\n  };\n\n  clubList.addEventListener('click', toggleList);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (dropList);\n\n//# sourceURL=webpack://3dglo/./src/modules/dropList.js?");
+
+/***/ }),
+
+/***/ "./src/modules/freeVisitModal.js":
+/*!***************************************!*\
+  !*** ./src/modules/freeVisitModal.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar visitModal = function visitModal() {\n  var modal = document.getElementById('free_visit_form'),\n      modalLink = document.querySelector('.open-popup');\n  modal.style.height = '100vh';\n\n  var openModal = function openModal() {\n    modal.style.display = 'block';\n  };\n\n  var closeModal = function closeModal() {\n    modal.style.display = 'none';\n  };\n\n  modalLink.addEventListener('click', openModal);\n  modal.addEventListener('click', function (e) {\n    var target = e.target;\n\n    if (target.matches('.overlay') || target.matches('.close_icon')) {\n      closeModal();\n    }\n\n    ;\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (visitModal);\n\n//# sourceURL=webpack://3dglo/./src/modules/freeVisitModal.js?");
 
 /***/ }),
 
@@ -451,7 +462,7 @@ eval("var map = {\n\t\"./log\": \"./node_modules/webpack/hot/log.js\"\n};\n\n\nf
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("d778ccb3d3aa45d4f091")
+/******/ 		__webpack_require__.h = () => ("eb3d2830788c2b54c817")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
