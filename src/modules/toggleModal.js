@@ -1,4 +1,4 @@
-const visitModal = (modal, modalLink, callback) => {
+const toggleModal = (modal, modalLink, callback) => {
     modal.style.height = '100vh';
 
     const openModal = () => {
@@ -12,7 +12,10 @@ const visitModal = (modal, modalLink, callback) => {
         modal.style.display = 'none';
     };
 
-    modalLink.addEventListener('click', openModal);
+    try {
+        modalLink.addEventListener('click', openModal);
+    } catch {};
+    
     modal.addEventListener('click', e => {
         let target = e.target;
 
@@ -22,4 +25,4 @@ const visitModal = (modal, modalLink, callback) => {
     });
 };
 
-export default visitModal;
+export default toggleModal;

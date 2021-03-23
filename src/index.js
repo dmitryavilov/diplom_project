@@ -2,18 +2,21 @@
 
 //Выпадающий список
 import dropList from './modules/dropList';
-//Модалка бесплатного визита
-import toggleForm from './modules/toggleForm';
+//Модалка стандарт
+import toggleModal from './modules/toggleModal';
 //Слайдер в главном блоке
 import heroSlider from './modules/heroSlider';
+//Валидация
+import sendForm from './modules/sendForm';
 
 
 //Выпадающий список
 dropList();
 //Открытие и закрытие модалок
-toggleForm(document.getElementById('free_visit_form'), document.querySelector('.open-popup'));
-toggleForm(document.getElementById('callback_form'), document.querySelector('.callback-btn'));
-toggleForm(
+toggleModal(document.getElementById('free_visit_form'), document.querySelector('.open-popup'));
+toggleModal(document.getElementById('callback_form'), document.querySelector('.callback-btn'));
+toggleModal(document.getElementById('thanks'));
+toggleModal(
     document.getElementById('gift'), 
     document.querySelector('.fixed-gift'),
     () => {
@@ -22,3 +25,7 @@ toggleForm(
 );
 //Слайдер в главном блоке
 heroSlider();
+//Валидации и отправки форм
+sendForm(document.getElementById('form1'));
+sendForm(document.getElementById('form2'));
+sendForm(document.getElementById('banner-form'));

@@ -38,7 +38,7 @@ eval("\nmodule.exports = function () {\n\treturn /[\\u001b\\u009b][[()#;?]*(?:[0
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_dropList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/dropList */ \"./src/modules/dropList.js\");\n/* harmony import */ var _modules_toggleForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/toggleForm */ \"./src/modules/toggleForm.js\");\n/* harmony import */ var _modules_heroSlider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/heroSlider */ \"./src/modules/heroSlider.js\");\n //Выпадающий список\n\n //Модалка бесплатного визита\n\n //Слайдер в главном блоке\n\n //Выпадающий список\n\n(0,_modules_dropList__WEBPACK_IMPORTED_MODULE_0__.default)(); //Открытие и закрытие модалок\n\n(0,_modules_toggleForm__WEBPACK_IMPORTED_MODULE_1__.default)(document.getElementById('free_visit_form'), document.querySelector('.open-popup'));\n(0,_modules_toggleForm__WEBPACK_IMPORTED_MODULE_1__.default)(document.getElementById('callback_form'), document.querySelector('.callback-btn'));\n(0,_modules_toggleForm__WEBPACK_IMPORTED_MODULE_1__.default)(document.getElementById('gift'), document.querySelector('.fixed-gift'), function () {\n  document.querySelector('.fixed-gift').style.display = 'none';\n}); //Слайдер в главном блоке\n\n(0,_modules_heroSlider__WEBPACK_IMPORTED_MODULE_2__.default)();\n\n//# sourceURL=webpack://3dglo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_dropList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/dropList */ \"./src/modules/dropList.js\");\n/* harmony import */ var _modules_toggleModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/toggleModal */ \"./src/modules/toggleModal.js\");\n/* harmony import */ var _modules_heroSlider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/heroSlider */ \"./src/modules/heroSlider.js\");\n/* harmony import */ var _modules_sendForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/sendForm */ \"./src/modules/sendForm.js\");\n //Выпадающий список\n\n //Модалка стандарт\n\n //Слайдер в главном блоке\n\n //Валидация\n\n //Выпадающий список\n\n(0,_modules_dropList__WEBPACK_IMPORTED_MODULE_0__.default)(); //Открытие и закрытие модалок\n\n(0,_modules_toggleModal__WEBPACK_IMPORTED_MODULE_1__.default)(document.getElementById('free_visit_form'), document.querySelector('.open-popup'));\n(0,_modules_toggleModal__WEBPACK_IMPORTED_MODULE_1__.default)(document.getElementById('callback_form'), document.querySelector('.callback-btn'));\n(0,_modules_toggleModal__WEBPACK_IMPORTED_MODULE_1__.default)(document.getElementById('thanks'));\n(0,_modules_toggleModal__WEBPACK_IMPORTED_MODULE_1__.default)(document.getElementById('gift'), document.querySelector('.fixed-gift'), function () {\n  document.querySelector('.fixed-gift').style.display = 'none';\n}); //Слайдер в главном блоке\n\n(0,_modules_heroSlider__WEBPACK_IMPORTED_MODULE_2__.default)(); //Валидации и отправки форм\n\n(0,_modules_sendForm__WEBPACK_IMPORTED_MODULE_3__.default)(document.getElementById('form1'));\n(0,_modules_sendForm__WEBPACK_IMPORTED_MODULE_3__.default)(document.getElementById('form2'));\n(0,_modules_sendForm__WEBPACK_IMPORTED_MODULE_3__.default)(document.getElementById('banner-form'));\n\n//# sourceURL=webpack://3dglo/./src/index.js?");
 
 /***/ }),
 
@@ -64,14 +64,25 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/modules/toggleForm.js":
-/*!***********************************!*\
-  !*** ./src/modules/toggleForm.js ***!
-  \***********************************/
+/***/ "./src/modules/sendForm.js":
+/*!*********************************!*\
+  !*** ./src/modules/sendForm.js ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar visitModal = function visitModal(modal, modalLink, callback) {\n  modal.style.height = '100vh';\n\n  var openModal = function openModal() {\n    modal.style.display = 'block';\n\n    try {\n      callback();\n    } catch (_unused) {}\n\n    ;\n  };\n\n  var closeModal = function closeModal() {\n    modal.style.display = 'none';\n  };\n\n  modalLink.addEventListener('click', openModal);\n  modal.addEventListener('click', function (e) {\n    var target = e.target;\n\n    if (target.matches('.overlay') || target.matches('.close_icon') || target.matches('.close-btn')) {\n      closeModal();\n    }\n\n    ;\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (visitModal);\n\n//# sourceURL=webpack://3dglo/./src/modules/toggleForm.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar sendForm = function sendForm(form) {\n  var checkbox = form.querySelector('input[type=checkbox]'),\n      thanksMessage = document.getElementById('thanks');\n  form.addEventListener('submit', function (e) {\n    e.preventDefault();\n    var target = e.target;\n\n    if (!checkbox.checked) {\n      alert('Поставьте галочку!');\n      return;\n    }\n\n    ;\n    form.closest('.popup').style.display = 'none';\n    thanksMessage.style.display = 'block';\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sendForm);\n\n//# sourceURL=webpack://3dglo/./src/modules/sendForm.js?");
+
+/***/ }),
+
+/***/ "./src/modules/toggleModal.js":
+/*!************************************!*\
+  !*** ./src/modules/toggleModal.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar toggleModal = function toggleModal(modal, modalLink, callback) {\n  modal.style.height = '100vh';\n\n  var openModal = function openModal() {\n    modal.style.display = 'block';\n\n    try {\n      callback();\n    } catch (_unused) {}\n\n    ;\n  };\n\n  var closeModal = function closeModal() {\n    modal.style.display = 'none';\n  };\n\n  try {\n    modalLink.addEventListener('click', openModal);\n  } catch (_unused2) {}\n\n  ;\n  modal.addEventListener('click', function (e) {\n    var target = e.target;\n\n    if (target.matches('.overlay') || target.matches('.close_icon') || target.matches('.close-btn')) {\n      closeModal();\n    }\n\n    ;\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (toggleModal);\n\n//# sourceURL=webpack://3dglo/./src/modules/toggleModal.js?");
 
 /***/ }),
 
@@ -473,7 +484,7 @@ eval("var map = {\n\t\"./log\": \"./node_modules/webpack/hot/log.js\"\n};\n\n\nf
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("ef84229f72492331176b")
+/******/ 		__webpack_require__.h = () => ("996436f9c7b5b2434cac")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
