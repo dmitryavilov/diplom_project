@@ -4,6 +4,8 @@
 import dropList from './modules/dropList';
 //Модалка бесплатного визита
 import toggleForm from './modules/toggleForm';
+//Слайдер в главном блоке
+import heroSlider from './modules/heroSlider';
 
 
 //Выпадающий список
@@ -18,3 +20,5 @@ toggleForm(
         document.querySelector('.fixed-gift').style.display = 'none';
     }
 );
+//Слайдер в главном блоке
+heroSlider();

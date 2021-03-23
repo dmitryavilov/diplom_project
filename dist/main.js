@@ -38,7 +38,7 @@ eval("\nmodule.exports = function () {\n\treturn /[\\u001b\\u009b][[()#;?]*(?:[0
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_dropList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/dropList */ \"./src/modules/dropList.js\");\n/* harmony import */ var _modules_toggleForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/toggleForm */ \"./src/modules/toggleForm.js\");\n //Выпадающий список\n\n //Модалка бесплатного визита\n\n //Выпадающий список\n\n(0,_modules_dropList__WEBPACK_IMPORTED_MODULE_0__.default)(); //Открытие и закрытие модалок\n\n(0,_modules_toggleForm__WEBPACK_IMPORTED_MODULE_1__.default)(document.getElementById('free_visit_form'), document.querySelector('.open-popup'));\n(0,_modules_toggleForm__WEBPACK_IMPORTED_MODULE_1__.default)(document.getElementById('callback_form'), document.querySelector('.callback-btn'));\n(0,_modules_toggleForm__WEBPACK_IMPORTED_MODULE_1__.default)(document.getElementById('gift'), document.querySelector('.fixed-gift'), function () {\n  document.querySelector('.fixed-gift').style.display = 'none';\n});\n\n//# sourceURL=webpack://3dglo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_dropList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/dropList */ \"./src/modules/dropList.js\");\n/* harmony import */ var _modules_toggleForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/toggleForm */ \"./src/modules/toggleForm.js\");\n/* harmony import */ var _modules_heroSlider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/heroSlider */ \"./src/modules/heroSlider.js\");\n //Выпадающий список\n\n //Модалка бесплатного визита\n\n //Слайдер в главном блоке\n\n //Выпадающий список\n\n(0,_modules_dropList__WEBPACK_IMPORTED_MODULE_0__.default)(); //Открытие и закрытие модалок\n\n(0,_modules_toggleForm__WEBPACK_IMPORTED_MODULE_1__.default)(document.getElementById('free_visit_form'), document.querySelector('.open-popup'));\n(0,_modules_toggleForm__WEBPACK_IMPORTED_MODULE_1__.default)(document.getElementById('callback_form'), document.querySelector('.callback-btn'));\n(0,_modules_toggleForm__WEBPACK_IMPORTED_MODULE_1__.default)(document.getElementById('gift'), document.querySelector('.fixed-gift'), function () {\n  document.querySelector('.fixed-gift').style.display = 'none';\n}); //Слайдер в главном блоке\n\n(0,_modules_heroSlider__WEBPACK_IMPORTED_MODULE_2__.default)();\n\n//# sourceURL=webpack://3dglo/./src/index.js?");
 
 /***/ }),
 
@@ -50,6 +50,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar dropList = function dropList() {\n  var clubList = document.querySelector('.club-select'),\n      hiddenContent = clubList.querySelector('ul');\n\n  var toggleList = function toggleList() {\n    if (clubList.classList.contains('list-active')) {\n      clubList.classList.remove('list-active');\n      hiddenContent.style.display = 'none';\n    } else {\n      clubList.classList.add('list-active');\n      hiddenContent.style.display = 'block';\n    }\n  };\n\n  clubList.addEventListener('click', toggleList);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (dropList);\n\n//# sourceURL=webpack://3dglo/./src/modules/dropList.js?");
+
+/***/ }),
+
+/***/ "./src/modules/heroSlider.js":
+/*!***********************************!*\
+  !*** ./src/modules/heroSlider.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar heroSlider = function heroSlider() {\n  var slider = document.querySelector('.main-slider'),\n      slides = slider.querySelectorAll('.slide');\n  var slideCounter = 0;\n\n  var autoPlay = function autoPlay() {\n    setTimeout(function () {\n      if (slideCounter + 1 === slides.length) {\n        slideCounter = -1;\n      }\n\n      ;\n\n      try {\n        slides[slideCounter].style.display = 'none';\n      } catch (_unused) {\n        slides[slides.length - 1].style.display = 'none';\n      }\n\n      ;\n      slides[slideCounter + 1].style.display = 'flex';\n      slideCounter++;\n      autoPlay();\n    }, 3000);\n  };\n\n  autoPlay();\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (heroSlider);\n\n//# sourceURL=webpack://3dglo/./src/modules/heroSlider.js?");
 
 /***/ }),
 
@@ -462,7 +473,7 @@ eval("var map = {\n\t\"./log\": \"./node_modules/webpack/hot/log.js\"\n};\n\n\nf
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("9ea9ea6455e9afcb7d44")
+/******/ 		__webpack_require__.h = () => ("ef84229f72492331176b")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
