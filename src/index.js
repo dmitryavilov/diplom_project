@@ -1,7 +1,5 @@
 'use strict';
 
-import a from './modules/test_module.js';
-import b from './modules/test_module2.js';
+import dropList from './modules/dropList.js';
 
-a();
-b();
+dropList();

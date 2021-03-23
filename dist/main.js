@@ -38,29 +38,18 @@ eval("\nmodule.exports = function () {\n\treturn /[\\u001b\\u009b][[()#;?]*(?:[0
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_test_module_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/test_module.js */ \"./src/modules/test_module.js\");\n/* harmony import */ var _modules_test_module2_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/test_module2.js */ \"./src/modules/test_module2.js\");\n\n\n\n\n(0,_modules_test_module_js__WEBPACK_IMPORTED_MODULE_0__.default)();\n(0,_modules_test_module2_js__WEBPACK_IMPORTED_MODULE_1__.default)();\n\n//# sourceURL=webpack://3dglo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_dropList_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/dropList.js */ \"./src/modules/dropList.js\");\n\n\n\n(0,_modules_dropList_js__WEBPACK_IMPORTED_MODULE_0__.default)();\n\n//# sourceURL=webpack://3dglo/./src/index.js?");
 
 /***/ }),
 
-/***/ "./src/modules/test_module.js":
-/*!************************************!*\
-  !*** ./src/modules/test_module.js ***!
-  \************************************/
+/***/ "./src/modules/dropList.js":
+/*!*********************************!*\
+  !*** ./src/modules/dropList.js ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar a = function a() {\n  alert('Hello a');\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (a);\n\n//# sourceURL=webpack://3dglo/./src/modules/test_module.js?");
-
-/***/ }),
-
-/***/ "./src/modules/test_module2.js":
-/*!*************************************!*\
-  !*** ./src/modules/test_module2.js ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar b = function b() {\n  alert('Hello b');\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (b);\n\n//# sourceURL=webpack://3dglo/./src/modules/test_module2.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar dropList = function dropList() {\n  var clubList = document.querySelector('.club-select'),\n      hiddenContent = clubList.querySelector('ul');\n\n  var toggleList = function toggleList() {\n    if (clubList.classList.contains('list-active')) {\n      clubList.classList.remove('list-active');\n      hiddenContent.style.display = 'none';\n    } else {\n      clubList.classList.add('list-active');\n      hiddenContent.style.display = 'block';\n    }\n  };\n\n  clubList.addEventListener('click', toggleList);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (dropList);\n\n//# sourceURL=webpack://3dglo/./src/modules/dropList.js?");
 
 /***/ }),
 
@@ -462,7 +451,7 @@ eval("var map = {\n\t\"./log\": \"./node_modules/webpack/hot/log.js\"\n};\n\n\nf
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("9168c9947af4cbc6e939")
+/******/ 		__webpack_require__.h = () => ("d778ccb3d3aa45d4f091")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
