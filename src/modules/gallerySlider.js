@@ -19,7 +19,8 @@ const gallerySlider = () => {
             transform: translateY(-50%);
             font-size: 25px;
             border: none;
-        `
+            z-index: 10;
+        `;
         wrapper.style.position = 'relative';
 
         const arrowPrev = document.createElement('button'),
@@ -93,7 +94,49 @@ const gallerySlider = () => {
 
         const dots = dotsWrapper.querySelectorAll('div');
 
-        console.log(dots);
+        const createAdaptive = () => {
+            const style = document.createElement('style');
+
+            style.textContent = `
+                @media (max-width: 550px) {
+                    #gl-prev, #gl-next {
+                        width: 40px !important;
+                        height: 40px !important;
+                        font-size: 22px !important;
+                    }
+
+                    .dots-wrapper {
+                        bottom: 20px !important;
+                    }
+
+                    .dot {
+                        width: 30px !important;
+                        height: 6px !important;
+                    }
+                }
+
+                @media (max-width: 400px) {
+                    #gl-prev, #gl-next {
+                        width: 30px !important;
+                        height: 30px !important;
+                        font-size: 19px !important;
+                    }
+
+                    .dots-wrapper {
+                        bottom: 13px !important;
+                    }
+
+                    .dot {
+                        width: 25px !important;
+                        height: 5px !important;
+                    }
+                }
+            `;
+
+            document.head.appendChild(style);
+        };
+
+        createAdaptive();
 
         dots.forEach((item, index) => {
             item.addEventListener('click', () => {
@@ -188,6 +231,10 @@ const gallerySlider = () => {
         };
 
         document.onkeydown = checkKeyNumber;
+
+        wrapper.onmouseleave = () => {
+            document.onkeydown = '';
+        };
     });
 
     autoPlay();
