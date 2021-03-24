@@ -8,6 +8,8 @@ import toggleModal from './modules/toggleModal';
 import heroSlider from './modules/heroSlider';
 //Валидация
 import sendForm from './modules/sendForm';
+//Слайдер из блока services
+import servicesSlider from './modules/servicesSlider';
 
 
 //Выпадающий список
@@ -29,3 +31,5 @@ heroSlider();
 sendForm(document.getElementById('form1'));
 sendForm(document.getElementById('form2'));
 sendForm(document.getElementById('banner-form'));
+//Слайдер из блока services
+servicesSlider();
