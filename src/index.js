@@ -10,6 +10,8 @@ import heroSlider from './modules/heroSlider';
 import sendForm from './modules/sendForm';
 //Слайдер из блока services
 import servicesSlider from './modules/servicesSlider';
+//Фотогаллерея
+import gallerySlider from './modules/gallerySlider';
 
 
 //Выпадающий список
@@ -33,3 +35,5 @@ sendForm(document.getElementById('form2'));
 sendForm(document.getElementById('banner-form'));
 //Слайдер из блока services
 servicesSlider();
+//Фотогаллерея
+gallerySlider();
