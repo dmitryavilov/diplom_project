@@ -6,8 +6,20 @@ const servicesSlider = () => {
           yellow = '#ffd11a';
 
     let sliderTransform = 0,
-        baseSlideWidth = 210,
+        baseSlideWidth,
         slideCounter = 0;
+
+    const checkBaseSlideWitdh = () => {
+        if (window.screen.width > 900) {
+            baseSlideWidth = 210;
+        };
+        
+        if (window.screen.width <= 900) {
+            baseSlideWidth = 190;
+        };
+    };
+
+    checkBaseSlideWitdh();
 
     const changeStyles = () => {
         sliderWrapper.style.cssText = `
@@ -70,12 +82,147 @@ const servicesSlider = () => {
     const prevBtn = document.getElementById('serv-prev'),
           nextBtn = document.getElementById('serv-next');
 
+    const createAdaptive = () => {
+        const adaptiveStyles = document.createElement('style');
+
+        adaptiveStyles.textContent = `
+            @media (max-width: 1330px) {
+                #services-slider-wrapper {
+                    width: 890px !important;
+                }
+
+                #serv-next {
+                    right: 50px !important;
+                }
+
+                #serv-prev {
+                    left: 50px !important;
+                }
+            }
+
+            @media (max-width: 1120px) {
+                #services-slider-wrapper {
+                    width: 665px !important;
+                }
+
+                #serv-prev {
+                    left: 5% !important;
+                }
+
+                #serv-next {
+                    right: 5% !important;
+                }
+            }
+
+            @media (max-width: 900px) {
+                #serv-prev {
+                    left: 3% !important;
+                }
+
+                #serv-next {
+                    right: 3% !important;
+                }
+
+                #serv-prev, #serv-next {
+                    width: 40px !important;
+                    height: 40px !important;
+                    font-size: 20px !important;
+                }
+
+                .services-slider .slide {
+                    width: 190px;
+                    min-width: 190px !important;
+                }
+
+                #services-slider-wrapper {
+                    width: 605px !important;
+                }
+            }
+
+            @media (max-width: 750px) {
+                #services-slider-wrapper {
+                    width: 405px !important;
+                }
+
+                #serv-prev {
+                    left: 7% !important;
+                }
+
+                #serv-next {
+                    right: 7% !important;
+                }
+            }
+
+            @media (max-width: 600px) {
+                #services-slider-wrapper {
+                    width: 205px !important;
+                }
+
+                #serv-prev {
+                    left: 10% !important;
+                }
+
+                #serv-next {
+                    right: 10% !important;
+                }
+            }
+
+            @media (max-width: 390px) {
+                #serv-prev, #serv-next {
+                    width: 35px !important;
+                    height: 35px !important;
+                    font-size: 18px !important;
+                }
+                
+                #serv-prev {
+                    left: 4% !important;
+                }
+
+                #serv-next {
+                    right: 4% !important;
+                }
+            }
+        `;
+
+        document.head.appendChild(adaptiveStyles);
+    };
+
+    createAdaptive();
+
     const toNextSlide = () => {
-        if (slideCounter + 5 !== slides.length) {
-            sliderTransform += baseSlideWidth + 12;
-            slider.style.transform = `translateX(${-sliderTransform}px)`;
-            slideCounter++;
-        };
+        if (window.screen.width > 1330) {
+            if (slideCounter + 5 === slides.length) {
+                return;
+            };
+        }
+        
+        if (window.screen.width <= 1330 && window.screen.width > 1120) {
+            if (slideCounter + 4 === slides.length) {
+                return;
+            };
+        }
+
+        if (window.screen.width <= 1120 && window.screen.width > 750) {
+            if (slideCounter + 3 === slides.length) {
+                return;
+            };
+        }
+
+        if (window.screen.width <= 750 && window.screen.width > 600) {
+            if (slideCounter + 2 === slides.length) {
+                return;
+            };
+        }
+
+        if (window.screen.width <= 600) {
+            if (slideCounter + 1 === slides.length) {
+                return;
+            };
+        }
+
+        sliderTransform += baseSlideWidth + 12;
+        slider.style.transform = `translateX(${-sliderTransform}px)`;
+        slideCounter++;
     };
 
     const toPrevSlide = () => {
