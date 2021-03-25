@@ -12,6 +12,8 @@ import sendForm from './modules/sendForm';
 import servicesSlider from './modules/servicesSlider';
 //Фотогаллерея
 import gallerySlider from './modules/gallerySlider';
+//Калькулятор
+import calculator from './modules/calculator'
 
 
 //Выпадающий список
@@ -20,13 +22,17 @@ dropList();
 toggleModal(document.getElementById('free_visit_form'), document.querySelector('.open-popup'));
 toggleModal(document.getElementById('callback_form'), document.querySelector('.callback-btn'));
 toggleModal(document.getElementById('thanks'));
-toggleModal(
-    document.getElementById('gift'), 
-    document.querySelector('.fixed-gift'),
-    () => {
-        document.querySelector('.fixed-gift').style.display = 'none';
-    }
-);
+
+try {
+    toggleModal(
+        document.getElementById('gift'), 
+        document.querySelector('.fixed-gift'),
+        () => {
+            document.querySelector('.fixed-gift').style.display = 'none';
+        }
+    );
+} catch {};
+
 //Слайдер в главном блоке
 heroSlider();
 //Валидации и отправки форм
@@ -37,3 +43,5 @@ sendForm(document.getElementById('banner-form'));
 servicesSlider();
 //Фотогаллерея
 gallerySlider();
+//Калькулятор
+calculator();

@@ -1,5 +1,7 @@
 const toggleModal = (modal, modalLink, callback) => {
-    modal.style.height = '100vh';
+    try {
+        modal.style.height = '100vh';
+    } catch {}
 
     const openModal = () => {
         modal.style.display = 'block';
