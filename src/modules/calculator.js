@@ -12,7 +12,6 @@ const calculator = () => {
         let target = e.target;
 
         if (mozaika.checked) {
-            result = 1999;
             if (target.matches('input[name=card-type]')) {
                 switch (+target.value) {
                     case 1:
@@ -30,7 +29,6 @@ const calculator = () => {
                 };
             };
         } else if (schelkovo.checked){
-            result = 2999;
             if (target.matches('input[name=card-type]')) {
                 switch (+target.value) {
                     case 1:
@@ -63,7 +61,7 @@ const calculator = () => {
               promocode = checkPromoCode();
 
         if (promocode) {
-            totalPrice.textContent = `${Math.floor(timeCount - (timeCount * 0.3))}`;
+            totalPrice.textContent = Math.floor(timeCount - (timeCount * 0.3));
             return;
         };
 

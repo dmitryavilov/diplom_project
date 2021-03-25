@@ -39,9 +39,12 @@ heroSlider();
 sendForm(document.getElementById('form1'));
 sendForm(document.getElementById('form2'));
 sendForm(document.getElementById('banner-form'));
+sendForm(document.getElementById('card_order'));
 //Слайдер из блока services
 servicesSlider();
 //Фотогаллерея
 gallerySlider();
 //Калькулятор
-calculator();
+try {
+    calculator();
+} catch {};

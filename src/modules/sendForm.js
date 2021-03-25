@@ -1,6 +1,96 @@
-const sendForm = (form) => {
+const sendForm = form => {
     const checkbox = form.querySelector('input[type=checkbox]'),
-          thanksMessage = document.getElementById('thanks');
+          thanksMessage = document.getElementById('thanks'),
+          phone = form.querySelector('input[type=tel]'),
+          name = form.querySelector('input[name=name]');
+
+    const phoneValidation = () => {
+        phone.value = phone.value.match(/\+?[7,8]([-()]*\d){10}/g);
+        phone.value = phone.value.split(',').join('');
+    };
+
+    const nameValidation = () => {
+        name.value = name.value.match(/[а-яё ]/gi);
+        name.value = name.value.split(',').join('');
+    };
+
+    const sendData = () => {
+        const thanksText = document.getElementById('thanks-text');
+        let data = {
+            name: name.value,
+            phone: phone.value,
+            card: 'Карта не указана'
+        };
+
+        const formWithCards = () => {
+            const cards = form.querySelectorAll('input[name=card-type]');
+
+            cards.forEach(item => {
+                if (item.checked) {
+                    switch (item.value) {
+                        case '1':
+                        case '1s':
+                            data.card = '1 Месяц, Соло';
+                            break;
+                        case '6':
+                        case '6s':
+                            data.card = '6 Месяцев, Соло';
+                            break;
+                        case '9':
+                        case '9s':
+                            data.card = '9 Месяцев, Соло';
+                            break;
+                        case '12':
+                        case '12s':
+                            data.card = '12 Месяцев, Соло';
+                            break;
+                        case '12d':
+                            data.card = '12 Месяцев, Дневная';
+                            break;
+                    };
+                };
+            });
+        };
+
+        formWithCards();
+
+        const toggleModal = () => {
+            try {
+                    form.closest('.popup').style.display = 'none';
+            } catch {};
+            thanksMessage.style.display = 'block';
+        };
+
+        toggleModal();
+
+        thanksText.textContent = 'Загрузка';
+
+        fetch('../server.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data) 
+        }).then(response => {
+            if (response.status === 200) {
+                thanksText.innerHTML = `
+                    Ваша заявка отправлена. <br />
+                    Мы свяжемся с вами в ближайшее время.
+                `
+            } else {
+                thanksText.innerHTML = `
+                    При отправке произошла ошибка!. <br />
+                    Статус ошибки ${response.status}.
+                `
+                throw new Error('status network not 200.');
+            }
+        }).catch(error => {
+            console.error(error);
+        });
+    };
+
+    phone.addEventListener('change', phoneValidation);
+    name.addEventListener('change', nameValidation);
 
     form.addEventListener('submit', e => {
         e.preventDefault();
@@ -12,8 +102,7 @@ const sendForm = (form) => {
             return; 
         };
 
-        form.closest('.popup').style.display = 'none';
-        thanksMessage.style.display = 'block';
+        sendData();
     });
 };
 
