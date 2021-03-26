@@ -13,7 +13,11 @@ import servicesSlider from './modules/servicesSlider';
 //Фотогаллерея
 import gallerySlider from './modules/gallerySlider';
 //Калькулятор
-import calculator from './modules/calculator'
+import calculator from './modules/calculator';
+//Стрелка вверх
+import toTop from './modules/toTopArrow';
+//Плавный скролл для якорных ссылок
+import slowScroll from './modules/slowScroll';
 
 
 //Выпадающий список
@@ -48,3 +52,7 @@ gallerySlider();
 try {
     calculator();
 } catch {};
+//Стрелка вверх
+toTop();
+//Плавный скролл для якорных ссылок
+slowScroll();

@@ -10,8 +10,16 @@ const sendForm = form => {
     };
 
     const nameValidation = () => {
-        name.value = name.value.match(/[а-яё ]/gi);
-        name.value = name.value.split(',').join('');
+        const valueReplace = elem => {
+            name.value = elem;
+        };
+
+        valueReplace(name.value.replace(/( |\-){1}[a-z]( |\-){1}/gi, ''));
+        valueReplace(name.value.replace(/\d/gi, ''));
+        valueReplace(name.value.replace(/((\-){2,}|)*((\-){2,}|)*/gi, ''));
+        valueReplace(name.value.replace(/\s+/gi, ' '));
+        valueReplace(name.value.replace(/( |^)[а-яё]/g, x => x.toUpperCase()));
+        valueReplace(name.value.replace(/\w/gi, ''));
     };
 
     const sendData = () => {
