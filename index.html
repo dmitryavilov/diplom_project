@@ -71,12 +71,15 @@
             <li class="scroll"><a href="#footer">Контакты</a></li>
           </ul>
           <div class="menu-button hidden-large">
-            <img src="images/menu-button.png" alt="" />
+            <img id="menu-btn" src="images/menu-button.png" alt="" />
           </div>
         </div>
       </nav>
-      <nav class="popup-menu hidden-large">
-        <div class="close-menu-btn">
+      <nav
+        class="popup-menu hidden-large animate__animated animate__fadeIn"
+        id="hidden-menu"
+      >
+        <div class="close-menu-btn" id="close-btn">
           <img src="images/delete.png" alt="" />
         </div>
         <ul>

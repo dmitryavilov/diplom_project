@@ -18,6 +18,7 @@ import calculator from './modules/calculator';
 import toTop from './modules/toTopArrow';
 //Плавный скролл для якорных ссылок
 import slowScroll from './modules/slowScroll';
+import mobileMenu from './modules/mobileMenu';
 
 
 //Выпадающий список
@@ -44,6 +45,7 @@ sendForm(document.getElementById('form1'));
 sendForm(document.getElementById('form2'));
 sendForm(document.getElementById('banner-form'));
 sendForm(document.getElementById('card_order'));
+sendForm(document.getElementById('footer_form'));
 //Слайдер из блока services
 servicesSlider();
 //Фотогаллерея
@@ -56,3 +58,5 @@ try {
 toTop();
 //Плавный скролл для якорных ссылок
 slowScroll();
+//Мобильное меню
+mobileMenu();

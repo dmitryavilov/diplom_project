@@ -2,6 +2,7 @@ const sendForm = form => {
     const checkbox = form.querySelector('input[type=checkbox]'),
           thanksMessage = document.getElementById('thanks'),
           phone = form.querySelector('input[type=tel]'),
+          clubNames = form.querySelectorAll('input[name=club-name]'),
           name = form.querySelector('input[name=name]');
 
     const phoneValidation = () => {
@@ -24,11 +25,36 @@ const sendForm = form => {
 
     const sendData = () => {
         const thanksText = document.getElementById('thanks-text');
-        let data = {
-            name: name.value,
-            phone: phone.value,
-            card: 'Карта не указана'
+        let data;
+
+        const checkData = () => {
+            console.log(name);
+            if (clubNames[0]) {
+                if (clubNames[0].checked) {
+                    data = {
+                        name: name !== null ? name.value : 'Имя не указано',
+                        phone: phone.value,
+                        club: 'Мозаика',
+                        card: 'Карта не указана'
+                    };
+                } else if (clubNames[1].checked) {
+                    data = {
+                        name: name !== null ? name.value : 'Имя не указано',
+                        phone: phone.value,
+                        club: 'Щелково',
+                        card: 'Карта не указана'
+                    };
+                };
+            } else {
+                data = {
+                    name: name.value !== null ? name.value : 'Имя не указано',
+                    phone: phone.value,
+                    card: 'Карта не указана'
+                };
+            };
         };
+
+        checkData();
 
         const formWithCards = () => {
             const cards = form.querySelectorAll('input[name=card-type]');
@@ -98,17 +124,23 @@ const sendForm = form => {
     };
 
     phone.addEventListener('change', phoneValidation);
-    name.addEventListener('change', nameValidation);
+
+    try {
+        name.addEventListener('change', nameValidation);
+    } catch {};
 
     form.addEventListener('submit', e => {
         e.preventDefault();
 
         let target = e.target;
+
+        try {
+            if(!checkbox.checked) {
+                alert('Поставьте галочку!');
+                return; 
+            };
+        } catch {};
         
-        if(!checkbox.checked) {
-            alert('Поставьте галочку!');
-            return; 
-        };
 
         sendData();
     });
