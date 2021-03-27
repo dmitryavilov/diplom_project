@@ -6,7 +6,7 @@ const sendForm = form => {
           name = form.querySelector('input[name=name]');
 
     const phoneValidation = () => {
-        phone.value = phone.value.match(/\+?[7,8]([-()]*\d){10}/g);
+        phone.value = phone.value.match(/^\+?[1-9]{1,2}[-\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$/g);
         phone.value = phone.value.split(',').join('');
     };
 
@@ -20,8 +20,14 @@ const sendForm = form => {
         valueReplace(name.value.replace(/((\-){2,}|)*((\-){2,}|)*/gi, ''));
         valueReplace(name.value.replace(/\s+/gi, ' '));
         valueReplace(name.value.replace(/( |^)[а-яё]/g, x => x.toUpperCase()));
-        valueReplace(name.value.replace(/\w/gi, ''));
-    };
+        valueReplace(name.value.replace(/(\w)/gi, ''));
+
+        try {
+            if (name.value.length < 2) {
+                name.value = '';
+            };
+        } catch {};
+    }; 
 
     const sendData = () => {
         const thanksText = document.getElementById('thanks-text');
