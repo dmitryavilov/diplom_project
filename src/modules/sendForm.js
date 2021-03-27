@@ -38,7 +38,6 @@ const sendForm = form => {
         let data;
 
         const checkData = () => {
-            console.log(name);
             if (clubNames[0]) {
                 if (clubNames[0].checked) {
                     data = {
@@ -163,11 +162,24 @@ const sendForm = form => {
 
         try {
             if(!checkbox.checked) {
-                alert('Поставьте галочку!');
-                return; 
+                let message = `<p style="color: white; margin-top: 10px" id="checkbox-error">Поставьте галочку!</p>`;
+
+                if (form.id !== 'banner-form') {
+                    form.querySelector('button').insertAdjacentHTML('afterend', message);
+                    setTimeout(() => {
+                        document.getElementById('checkbox-error').style.display = 'none';
+                    }, 3000);
+                    return;
+                } else {
+                    message = `<p style="color: white; margin-top: 10px" id="checkbox-error">Поставьте галочку!</p>`;
+                    form.querySelector('button').insertAdjacentHTML('afterend', message);
+                    setTimeout(() => {
+                        document.getElementById('checkbox-error').style.display = 'none';
+                    }, 3000);
+                    return
+                };
             };
         } catch {};
-
 
         try {
             if (form.id == 'footer_form') {
