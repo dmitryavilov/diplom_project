@@ -176,7 +176,7 @@ const sendForm = form => {
 
         try {
             if(!checkbox.checked) {
-                showErrorText(`<p style="color: green; margin-top: 10px" id="checkbox-error">Поставьте галочку!</p>`);
+                showErrorText(`<p style="color: red; margin-top: 10px" id="checkbox-error">Поставьте галочку!</p>`);
                 return;
             };
         } catch {};
@@ -186,7 +186,7 @@ const sendForm = form => {
                 if (clubNames[0].checked || clubNames[1].checked) {
                     sendData();
                 } else {
-                    showErrorText(`<p style="color: green; margin-top: 10px" id="checkbox-error">Выберите клуб!</p>`);
+                    showErrorText(`<p style="color: red; margin-top: 10px" id="checkbox-error">Выберите клуб!</p>`);
                     return;
                 };
             } else {
