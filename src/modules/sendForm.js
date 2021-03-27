@@ -162,8 +162,10 @@ const sendForm = form => {
 
         const showErrorText = message => {
             if (form.id !== 'banner-form') {
-                    if (document.querySelector('.checkbox-error')) {
-                        document.querySelector('.checkbox-error').style.display = 'none';
+                    if (document.querySelectorAll('.checkbox-error')[1]) {
+                        document.querySelectorAll('.checkbox-error').forEach(item => {
+                            item.style.display = 'none';
+                        });
                     };
 
                     form.querySelector('button').insertAdjacentHTML('afterend', message);
@@ -171,8 +173,10 @@ const sendForm = form => {
                         document.querySelector('.checkbox-error').style.display = 'none';
                     }, 3000);
                 } else {
-                    if (document.querySelector('.checkbox-error')) {
-                        document.querySelector('.checkbox-error').style.display = 'none';
+                    if (document.querySelectorAll('.checkbox-error')[1]) {
+                        document.querySelectorAll('.checkbox-error').forEach(item => {
+                            item.style.display = 'none';
+                        });
                     };
                     form.querySelector('button').insertAdjacentHTML('afterend', message);
                     setTimeout(() => {
