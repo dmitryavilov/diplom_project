@@ -160,24 +160,24 @@ const sendForm = form => {
     form.addEventListener('submit', e => {
         e.preventDefault();
 
+        const showErrorText = message => {
+            if (form.id !== 'banner-form') {
+                    form.querySelector('button').insertAdjacentHTML('afterend', message);
+                    setTimeout(() => {
+                        document.getElementById('checkbox-error').style.display = 'none';
+                    }, 3000);
+                } else {
+                    form.querySelector('button').insertAdjacentHTML('afterend', message);
+                    setTimeout(() => {
+                        document.getElementById('checkbox-error').style.display = 'none';
+                }, 3000);
+            };
+        };
+
         try {
             if(!checkbox.checked) {
-                let message = `<p style="color: white; margin-top: 10px" id="checkbox-error">Поставьте галочку!</p>`;
-
-                if (form.id !== 'banner-form') {
-                    form.querySelector('button').insertAdjacentHTML('afterend', message);
-                    setTimeout(() => {
-                        document.getElementById('checkbox-error').style.display = 'none';
-                    }, 3000);
-                    return;
-                } else {
-                    message = `<p style="color: white; margin-top: 10px" id="checkbox-error">Поставьте галочку!</p>`;
-                    form.querySelector('button').insertAdjacentHTML('afterend', message);
-                    setTimeout(() => {
-                        document.getElementById('checkbox-error').style.display = 'none';
-                    }, 3000);
-                    return
-                };
+                showErrorText(`<p style="color: green; margin-top: 10px" id="checkbox-error">Поставьте галочку!</p>`);
+                return;
             };
         } catch {};
 
@@ -186,7 +186,8 @@ const sendForm = form => {
                 if (clubNames[0].checked || clubNames[1].checked) {
                     sendData();
                 } else {
-                    alert('Выберите клуб!');
+                    showErrorText(`<p style="color: green; margin-top: 10px" id="checkbox-error">Выберите клуб!</p>`);
+                    return;
                 };
             } else {
                 sendData();
