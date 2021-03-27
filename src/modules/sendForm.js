@@ -26,6 +26,10 @@ const sendForm = form => {
             if (name.value.length < 2) {
                 name.value = '';
             };
+
+            if (name.value[0] === ' ') {
+                name.value = name.value.substr(1);
+            };
         } catch {};
     }; 
 
@@ -99,6 +103,10 @@ const sendForm = form => {
                     form.closest('.popup').style.display = 'none';
             } catch {};
             thanksMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                thanksMessage.style.display = 'none';
+            }, 5000);
         };
 
         toggleModal();
@@ -110,6 +118,7 @@ const sendForm = form => {
 
             try {
                 checkbox.checked = false;
+                document.querySelectorAll('input[name=card-type]')[0].checked = true;
             } catch {};
         };
 
