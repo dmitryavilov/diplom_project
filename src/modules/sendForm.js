@@ -97,6 +97,16 @@ const sendForm = form => {
 
         toggleModal();
 
+        const clearInputs = () => {
+            form.querySelectorAll('input').forEach(item => {
+                item.value = '';
+            });
+
+            try {
+                checkbox.checked = false;
+            } catch {};
+        };
+
         thanksText.textContent = 'Загрузка';
 
         fetch('./server.php', {
@@ -118,7 +128,11 @@ const sendForm = form => {
                 `
                 throw new Error('status network not 200.');
             }
-        }).catch(error => {
+        }).then(() => {
+            clearInputs();
+        })
+        .catch(error => {
+            clearInputs();
             console.error(error);
         });
     };
@@ -132,8 +146,6 @@ const sendForm = form => {
     form.addEventListener('submit', e => {
         e.preventDefault();
 
-        let target = e.target;
-
         try {
             if(!checkbox.checked) {
                 alert('Поставьте галочку!');
@@ -143,12 +155,14 @@ const sendForm = form => {
 
 
         try {
-            if (form.id = 'footer_form') {
+            if (form.id == 'footer_form') {
                 if (clubNames[0].checked || clubNames[1].checked) {
                     sendData();
                 } else {
                     alert('Выберите клуб!');
                 };
+            } else {
+                sendData();
             };
         } catch {
             sendData();
