@@ -140,9 +140,19 @@ const sendForm = form => {
                 return; 
             };
         } catch {};
-        
 
-        sendData();
+
+        try {
+            if (form.id = 'footer_form') {
+                if (clubNames[0].checked || clubNames[1].checked) {
+                    sendData();
+                } else {
+                    alert('Выберите клуб!');
+                };
+            };
+        } catch {
+            sendData();
+        };
     });
 };
 

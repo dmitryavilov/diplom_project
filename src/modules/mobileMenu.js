@@ -16,15 +16,17 @@ const mobileMenu = () => {
     const slickMenu = () => {
         let height = head.clientHeight + menuWrapper.clientHeight;
 
-        if (document.documentElement.scrollTop >= height) {
+        if (window.screen.width <= 768) {
+            if (document.documentElement.scrollTop >= height) {
             topMenu.style.cssText = `
                 position: fixed;
                 z-index: 10;
             `;
-        } else {
-            topMenu.style.cssText = `
-                position: relative;
-            `;
+            } else {
+                topMenu.style.cssText = `
+                    position: relative;
+                `;
+            };
         };
     };
 
