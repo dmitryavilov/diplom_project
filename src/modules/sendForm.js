@@ -172,9 +172,7 @@ const sendForm = form => {
                     }, 3000);
                 } else {
                     if (document.querySelector('.checkbox-error')) {
-                        document.querySelectorAll('.checkbox-error').forEach(item => {
-                            item.style.display = 'none'
-                        });
+                        document.querySelector('.checkbox-error').style.display = 'none';
                     };
                     form.querySelector('button').insertAdjacentHTML('afterend', message);
                     setTimeout(() => {
