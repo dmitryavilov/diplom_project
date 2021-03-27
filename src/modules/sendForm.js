@@ -99,7 +99,7 @@ const sendForm = form => {
 
         thanksText.textContent = 'Загрузка';
 
-        fetch('../server.php', {
+        fetch('./server.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
